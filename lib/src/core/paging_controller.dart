@@ -187,6 +187,15 @@ class PagingController<PageKeyType, ItemType>
     _pageRequestListeners!.add(listener);
   }
 
+  /// Calls listener every time new items are needed.
+  ///
+  /// Listeners can be removed with [removePageRequestListener].
+  bool hasPageRequestListener(PageRequestListener<PageKeyType> listener) {
+    assert(_debugAssertNotDisposed());
+    return _pageRequestListeners!.contains(listener);
+  }
+
+
   /// Stops calling the listener every time new items are needed.
   ///
   /// Listeners can be added with [addPageRequestListener].
